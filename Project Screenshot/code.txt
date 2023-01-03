@@ -1,0 +1,15 @@
+dataset$age = ifelse(is.na(dataset$age),
+ave(dataset$age, FUN = function(x) mean(x, na.rm = 'TRUE’)),
+dataset$age)
+
+data1 <- data                                              # Duplicate data frame
+data1$x1[is.na(data1$x1)] <- mean(data1$x1, na.rm = TRUE)  # Replace NA in one column
+data1       
+
+data2 <- data                                              # Duplicate data frame
+for(i in 1:ncol(data)) {                                   # Replace NA in all columns
+  data2[ , i][is.na(data2[ , i])] <- mean(data2[ , i], na.rm = TRUE)
+}
+data2   
+
+                                                   # Print updated data frame  
